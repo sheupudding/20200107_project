@@ -1,0 +1,456 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.wrap{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    font-family: 'Verdana', Times, serif, 'Microsoft JhengHei';
+}
+.topBar .title{
+    margin: auto;
+    max-width: 1000px;
+    width: 70%;
+    margin: auto;
+    font-family: 'Verdana', Times, serif, 'Microsoft JhengHei';
+}
+
+.topBar{
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    padding-top: 30px;
+    box-shadow: 0 0 5px;
+}
+.topBar h2{
+    font-size: 40px;
+    text-align: center;
+    float: left;
+    color: #000;
+}
+.topBar .rightPart{
+    float: right;
+    position: relative;
+}
+.topBar .rightPart p{
+    font-size: 20px;
+    border-right: 2px solid #000;
+    margin-bottom: 10px;
+    min-width: 100px;
+}
+.topBar .rightPart .name a{
+    color: brown;
+    text-decoration: none;
+}
+.topBar .rightPart .name {
+    padding: 10px;
+}
+.topBar .rightPart .profileList{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.topBar .rightPart:hover .profileList{
+    display:block;
+}
+.topBar .rightPart .profileList a{
+    color: black;
+    padding: 7px 5px 7px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+.topBar .rightPart .profileList input{
+    border: none;
+    background: none;
+    outline: none;
+    text-decoration: none;
+    color: black;
+    padding: 7px 5px 7px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    cursor: pointer;
+}
+.topBar .rightPart .profileList a:hover{
+    color: blueviolet;
+}
+.topBar .rightPart .profileList input:hover{
+    color: blueviolet;
+}
+
+.clear{
+    clear:both;
+}
+
+.tags{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding-top: 10px;
+}
+.tags a{
+    float: left;
+    padding: 10px;
+    background-color: violet;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    border-radius:20px;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.tags a:hover{
+    background-color: goldenrod;
+}
+
+
+.createButton{
+    position:fixed;
+    bottom:50px;
+    right:50px;
+    z-index: 1;
+}
+.createButton button{
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.invisualPictureUrl{
+    display: none;
+}
+
+.createForm{
+    margin-bottom: 100px;
+}
+
+.postCell{
+    margin:20px;
+    /* padding: 10px; */
+    margin-bottom: 300px;
+}
+.postCell li{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.postCell li a{
+    margin: auto;
+    text-decoration: none;
+}
+.postCell img{
+    width: 60%;
+    height: 300px;
+    float: left;
+    object-fit: cover;
+}
+.postCell .rightInformation{
+    display: flex;
+    height: 300px;
+    width: 40%;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    background: coral;
+    position: relative;
+    z-index: 1;
+    transition: 0.4s;
+    color: #fff;
+}
+.postCell li .deleteButton{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    background-color: chocolate;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2;
+}
+.postCell li .deleteButton:hover{
+    font-weight: bold;
+}
+.postCell li:hover .rightInformation{
+    color: darkolivegreen;
+}
+.postCell .rightInformation .span1 {
+    left: 0;
+}
+.postCell .rightInformation .span2 {
+    left: 25%;
+    transition-delay: 0.1s;
+}
+.postCell .rightInformation .span3 {
+    left: 50%;
+    transition-delay: 0.18s;
+}
+.postCell .rightInformation .span4 {
+    left: 75%;
+    transition-delay: 0.23s;
+}
+.postCell .rightInformation span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: orange;
+    transform: translateY(150%);
+    border-radius: 50%;
+    transition: 0.4s;
+    z-index: -1;
+}
+.postCell li:hover .rightInformation span{
+    transform: translateY(0) scale(2);
+}
+
+
+.postCell .rightInformation .mid{
+    margin: auto;
+    text-align: center;
+}
+.postCell .rightInformation .title{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 20px;
+}
+.postCell .rightInformation p{
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.profileTitle{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    max-width: 1000px;
+    width: 70%;
+    font-size:40px;
+    font-weight: bold;
+}
+
+.detail{
+    margin-bottom: 100px;
+}
+.detail .title{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    margin: auto;
+    max-width: 1000px;
+    width: 70%;
+    font-size: 50px;
+    font-weight: 1000;
+}
+.detail .introduction{
+    max-width: 1000px;
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    font-size:25px;
+}
+.detail .creator{
+    max-width: 1000px;
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    font-size:15px;
+}
+.detail .creatorInfo{
+    line-height: 20px;
+    float: left;
+    margin-left: 10px;
+}
+.detail .creator img{
+    width: 20px;
+    float: left;
+}
+.detail .cover img{
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1100px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.detail .content{
+    margin: auto;
+    max-width: 1000px;
+    width: 70%;
+    padding: 10px;
+    font-size: 20px;
+    overflow: hidden;
+}
+.detail .commentCell{
+    width: 50%;
+    max-width: 800px;
+    background: #fff;
+    margin: auto;
+    list-style-type: none;
+    padding: 20px;
+    box-shadow: 2px 2px 3px #999;
+    margin-bottom: 50px;
+}
+.detail .commentCell .creator{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+}
+.detail .commentCell p{
+    margin-left: 50px;
+    margin: 10px;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 30px;
+}
+.detail .commentCell .commentDeleteButton{
+    text-decoration: none;
+    float:right;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: chocolate;
+    line-height:20px;
+}
+.detail .commentCell .commentDeleteButton:hover{
+    font-weight: bold;
+}
+
+
+.inputCounter{
+    border:none;
+}
+
+.createTitle{
+    font-weight: bold;
+    font-size:30px;
+    text-align: center;
+    margin: 20px;
+}
+
+.detail .comment{
+    margin: auto;
+    max-width: 700px;
+    padding-bottom: 50px;
+    width: 80%;
+    border-radius: 50px;
+    background-color: rgb(245, 245, 245);
+    margin-top: 50px;
+}
+.detail .comment .title{
+    font-size: 30px;
+    max-width:1000px;
+    width: 80%;
+}
+.detail .comment .title p{
+    float: left;
+    line-height:40px;
+}
+.detail .comment .title .addComment{
+    float: right;
+}
+
+.deleteButton{
+    position:fixed;
+    bottom:50px;
+    right:50px;
+    z-index: 1;
+}
+.deleteButton button{
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+}
+.editButton{
+    position:fixed;
+    bottom:200px;
+    right:50px;
+    z-index: 1;
+}
+.editButton button{
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.loginWrap{
+    max-width: 800px;
+    width: 50%;
+    box-shadow: 2px 2px 3px #999;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+    padding: 50px;
+    font-family: 'Verdana', Times, serif, 'Microsoft JhengHei';
+}
+.loginWrap .loginTitle{
+    padding: 20px;
+    font-size:30px;
+}
+.loginWrap form{
+    min-width: 300px;
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+}

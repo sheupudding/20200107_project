@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link href="/all.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/stylesheets/all.css">
+</head>
+
+<body>
+  <div class="topBar">
+    <div class="title">
+    <a href="/" class="logo"><h2>皓翔工作坊</h2></a>
+    <div class="rightPart">
+      <p>編輯貼文</p>
+      <div class="name">
+        <%= name %>  歡迎回來
+      </div>
+      <div class="profileList">
+        <a href="/profile">編輯貼文</a>
+        <form method="get" action="/logout"><input type="submit" value="登出"></form>
+      </div>
+    </div>
+    <div class="clear"></div></div>
+  </div>
+  <div class="wrap">
+    <form method="post" action="/edit?post=<%= dataId %>">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">標題</span>
+          </div>
+          <input value="<%= data.title %>" type="text" class="form-control" placeholder="寫下漂亮的標題吧" aria-label="Username" aria-describedby="basic-addon1" name="title">
+        </div>
+        <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="introduction"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content"></textarea> -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">簡介</span>
+          </div>
+          <textarea onkeyup="textCounter(this,'counter',50);" maxlength="50" class="form-control" placeholder="50個字介紹你的文章" aria-label="With textarea" name="introduction"><%= data.introduction %></textarea>
+          <!-- <input class="input-group-text" disabled  maxlength="3" size="3" value="10" id="counter"> -->
+          <div class="input-group-append">
+            <div class="input-group-text">
+              剩餘
+              <input class="inputCounter" disabled  maxlength="1" size="1" value="50" id="counter">
+              字
+            </div>
+          </div>
+        </div>
+        <script>
+          function textCounter(field,field2,maxlimit)
+          {
+           var countfield = document.getElementById(field2);
+           if ( field.value.length > maxlimit ) {
+            field.value = field.value.substring( 0, maxlimit );
+            return false;
+           } else {
+            countfield.value = maxlimit - field.value.length;
+           }
+          }
+        </script>
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">內容</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" name="content" rows="10"><%= data.content %></textarea>
+        </div>
+        <input type="submit" value="修改" class="btn btn-outline-info">
+        <input type="button" value="取消" onclick="history.go(-1)" class="btn btn-outline-info">
+      </form>
+  </div>
+</body>
+
+</html>

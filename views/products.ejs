@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form method="post" action="/addProduct">
+        <input  name="name" value="" placeholder="輸入商品">
+        <input  name="price" value="" placeholder="輸入價錢">
+        <input type="submit"  value="送出">
+    </form>
+    <br/>
+    <% for(let i =0;data.length>i;i++){ %>
+        <li><%- data[i].name %>-$<%- data[i].price %></li>
+    <% } %>
+  </body>
+</html>

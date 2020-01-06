@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/all.css">
+  </head>
+  <body>
+    <div class="topBar">
+      <div class="title">
+      <a href="/" class="logo"><h2>皓翔工作坊 | 註冊</h2></a>
+      <div class="clear"></div></div>
+    </div>
+    <div class="loginWrap">
+      <div class="loginTitle">這裡能夠分享任何事，歡迎你的加入！</div>
+      <form action="/register" method="post">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">帳號</span>
+          </div>
+          <input type="text" class="form-control" aria-describedby="basic-addon1" name="name">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">密碼</span>
+          </div>
+          <input type="text" class="form-control" aria-describedby="basic-addon1" name="password">
+        </div>
+        <input type="submit" value="註冊" class="btn btn-outline-info">
+      </form>
+      <a href="/login">已經有帳號嗎？</a >
+    </div>
+  </body>
+</html>

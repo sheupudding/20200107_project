@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link href="/all.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/stylesheets/all.css">
+</head>
+
+<body>
+  <div class="topBar">
+    <div class="title">
+    <a href="/" class="logo"><h2>皓翔工作坊</h2></a>
+    <div class="rightPart">
+      <p>貼文</p>
+      <div class="name">
+        <%= name %>  歡迎回來
+      </div>
+      <div class="profileList">
+        <a href="/profile">個人貼文</a>
+        <form method="get" action="/logout"><input type="submit" value="登出"></form>
+      </div>
+    </div>
+    <div class="clear"></div></div>
+  </div>
+  <div class="wrap">
+  <!-- <p><%= name %></p>
+  <p><%= password %></p>
+  <p><%= memberId %></p>
+  <h2> <%= title %></h2> -->
+
+  <div class="detail">
+    <div class="title"><%=data.title%></div>
+    <div class="introduction"><%=data.introduction%></div>
+    <div class="creator">
+      <img src="https://scontent.ftpe2-1.fna.fbcdn.net/v/t1.0-9/16196015_10154888128487744_6901111466535510271_n.png?_nc_cat=103&_nc_oc=AQk0-mREgUriZV4gIqK6Dua4oQmQRR99tGDS-mVazXdybN9bbwuo-8qDcgeDrCcI8pI&_nc_ht=scontent.ftpe2-1.fna&oh=4f1cd11597d41b2543076a1837b8e2ce&oe=5EA7DCE9" alt="">
+      <div class="creatorInfo"><%=data.creatorName%>  ● 2019</div>
+      <div class="clear"></div>
+    </div>
+    <div class="cover"><img src="<%- data.photoUrl %>"></div>
+    <div class="content"><%=data.content%></div>
+
+    <div class="comment">
+      <div class="title">
+        <p>留言</p>
+        <form method="post" action="/addComment?post=<%- dataId %>" class="addComment">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="新增留言" aria-label="Recipient's username" aria-describedby="button-addon2" name="value">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">發佈</button>
+            </div>
+          </div>
+        </form>
+        <div class="clear"></div>
+      </div>
+      <hr>
+      <% for(let i =0;commentData.length>i;i++){ %>
+        <li class="commentCell">
+          <div class="creator">
+            <img src="https://scontent.ftpe2-1.fna.fbcdn.net/v/t1.0-9/16196015_10154888128487744_6901111466535510271_n.png?_nc_cat=103&_nc_oc=AQk0-mREgUriZV4gIqK6Dua4oQmQRR99tGDS-mVazXdybN9bbwuo-8qDcgeDrCcI8pI&_nc_ht=scontent.ftpe2-1.fna&oh=4f1cd11597d41b2543076a1837b8e2ce&oe=5EA7DCE9" alt="">
+            <div class="creatorInfo"><%-commentData[i].creatorName%></div>
+            <%if(commentData[i].creator==memberId){%>
+              <a href="/delete?comment=<%- commentDataId[i] %>" class="commentDeleteButton">
+                  我要刪除
+              </a>
+            <%}%>
+            <div class="clear"></div>
+          </div>
+          <p>
+            <%- commentData[i].value %>
+          </p>
+        </li>
+      <% } %>
+    </div>
+  </div>
+
+  <% if(  data.creator ==   memberId )
+    {%>
+    <a href="/delete?post=<%- dataId %>" class="deleteButton">
+      <button class="btn btn-outline-info">
+        我要</br>刪除
+      </button>
+    </a>
+    <a href="/edit?post=<%- dataId %>" class="editButton">
+      <button class="btn btn-outline-info">
+        我要</br>修改
+      </button>
+    </a>
+  <% } %>
+
+  </div>
+</body>
+
+</html>

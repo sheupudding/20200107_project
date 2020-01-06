@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link href="/all.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/stylesheets/all.css">
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+</head>
+
+<body>
+  <div class="topBar">
+    <div class="title">
+    <a href="/" class="logo"><h2>皓翔工作坊</h2></a>
+    <div class="rightPart">
+      <p>發佈</p>
+      <div class="name">
+        <%= name %>  歡迎回來
+      </div>
+      <div class="profileList">
+        <a href="/profile">個人貼文</a>
+        <form method="get" action="/logout"><input type="submit" value="登出"></form>
+      </div>
+    </div>
+    <div class="clear"></div></div>
+  </div>
+  <div class="wrap">
+
+    <!-- <form action="/upload" method="post">
+      <input type="file" id="fileButton" value="upload" name="foto">
+      <input type="submit" value="upload">
+    </form> -->
+
+    <!-- <div class="pictureUrl"></div> -->
+
+  <div class="createTitle">
+    新增貼文
+  </div>
+
+  <form method="post" action="/create" class="createForm">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">標題</span>
+      </div>
+      <input type="text" class="form-control" placeholder="寫下漂亮的標題吧" aria-label="Username" aria-describedby="basic-addon1" name="title">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">簡介</span>
+      </div>
+      <textarea onkeyup="textCounter(this,'counter',50);" maxlength="50" class="form-control" placeholder="50個字介紹你的文章" aria-label="With textarea" name="introduction"></textarea>
+      <!-- <input class="input-group-text" disabled  maxlength="3" size="3" value="10" id="counter"> -->
+      <div class="input-group-append">
+        <div class="input-group-text">
+          剩餘
+          <input class="inputCounter" disabled  maxlength="1" size="1" value="50" id="counter">
+          字
+        </div>
+      </div>
+    </div>
+    <script>
+      function textCounter(field,field2,maxlimit)
+      {
+       var countfield = document.getElementById(field2);
+       if ( field.value.length > maxlimit ) {
+        field.value = field.value.substring( 0, maxlimit );
+        return false;
+       } else {
+        countfield.value = maxlimit - field.value.length;
+       }
+      }
+    </script>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">封面</span>
+      </div>
+      <div class="custom-file">
+        <input id="fileButton" type="file" class="custom-file-input" id="fileButton" aria-describedby="inputGroupFileAddon01" name="file">
+        <label id="showFileName" class="custom-file-label" for="inputGroupFile01">選擇檔案</label>
+      </div>
+    </div>
+    <script>
+      // 初始化 Firebase
+      var config = {
+       apiKey: "AIzaSyC73Y5K89J1kzCz4x3CS7Qr_aleL39Wo7s",
+       authDomain: "js-418aa.firebaseapp.com",
+       databaseURL: "https://js-418aa.firebaseio.com",
+       projectId: "js-418aa",
+       storageBucket: "js-418aa.appspot.com",
+       messagingSenderId: "170412983589",
+       appId: "1:170412983589:web:eb81277ff1bacd277c46cc",
+       measurementId: "G-813YM6SN0D"
+     };
+     firebase.initializeApp(config);
+     //storage 開始
+     //……………………………………………………………………..
+     var storage = firebase.storage();
+   
+     var fileButton=document.getElementById('fileButton');
+     fileButton.addEventListener("change", function(e) {
+     console.log("正在上傳...");
+       var file=e.target.files[0];
+       var storageRef = firebase.storage().ref('photo/'+file.name);
+       document.querySelector('#showFileName').innerHTML = '上傳中...';
+       //執行
+       let imageData = storageRef.put(file).then(function(snapshot) {
+         console.log('上傳成功');
+         snapshot.ref.getDownloadURL().then(function(url){
+           console.log(url);
+           document.querySelector('#showFileName').innerHTML = file.name;
+           document.querySelector('.pictureUrl').innerHTML = '<input class="invisualPictureUrl" type="text" value="'+url+'" name="pictureUrl">';
+           // '<img src="'+url+'">';
+         })
+       });
+     });
+     </script>
+
+    <div class="pictureUrl">
+    </div>
+    
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">內容</span>
+      </div>
+      <textarea class="form-control" aria-label="With textarea" name="content" rows="10"></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">選擇符合的文章標籤</span>
+      </div>
+      <select name="tag" id="tag">
+        <option value="生活">生活</option>
+        <option value="知識">知識</option>
+        <option value="休閒">休閒</option>
+        <option value="運動">運動</option>
+        <option value="藝術">藝術</option>
+        <option value="政治">政治</option>
+      </select>
+    </div>
+    <input type="submit" value="發佈" class="btn btn-outline-info">
+  </form>
+
+  </div>
+</body>
+
+</html>

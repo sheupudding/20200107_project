@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1><%= title %></h1>
+
+  <form method="post" action="/messageCreate">
+    <input name="value" value="" placeholder="輸入訊息">
+    <input type="submit" value="送出">
+  </form>
+  <br />
+  <% for(let i =0;data.length>i;i++){ %>
+  <li><%- data[i].value %></li>
+  <% } %>
+</body>
+
+</html>

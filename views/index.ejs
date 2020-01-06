@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link href="/all.css" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/stylesheets/all.css">
+</head>
+
+<body>
+  
+  <div class="topBar">
+    <div class="title">
+    <a href="/" class="logo"><h2>皓翔工作坊</h2></a>
+    <div class="rightPart">
+      <p>首頁</p>
+      <div class="name">
+        <%= name %>  歡迎回來
+      </div>
+      <div class="profileList">
+        <a href="/profile">個人貼文</a>
+        <form method="get" action="/logout"><input type="submit" value="登出"></form>
+      </div>
+    </div>
+    <div class="clear"></div></div>
+  </div>
+  <div class="wrap"><div class="clear"></div>
+  <div class="tags">
+    <a href="/?tag=生活">生活</a>
+    <a href="/?tag=知識">知識</a>
+    <a href="/?tag=休閒">休閒</a>
+    <a href="/?tag=運動">運動</a>
+    <a href="/?tag=藝術">藝術</a>
+    <a href="/?tag=政治">政治</a>
+    <div class="clear"></div>
+  </div>
+  
+  <ul class="postCell">
+    <% for(let i =0;data.length>i;i++){ 
+      if(i==0){%>
+        <li>
+          <a href="/detail?post=<%- idData[i] %>">
+            <img src="<%- data[i].photoUrl %>">
+            <div class="rightInformation">
+              <div class="mid">
+                <h1 class="title"><%- data[i].title %></h1>
+                <p class="introduction"><%- data[i].introduction%></p>
+                <p><%- data[i].creatorName %> ● 2019</p>
+              </div>
+              <span class="span1"></span><span class="span2"></span><span class="span3"></span><span class="span4"></span>
+            </div>
+            <div class="clear"></div>
+          </a>
+        </li>
+      <% } else if (i==1) {%>
+        <li>
+          <a href="/detail?post=<%- idData[i] %>">
+            <div class="rightInformation">
+              <div class="mid">
+                <h1 class="title"><%- data[i].title %></h1>
+                <p class="introduction"><%- data[i].introduction%></p>
+                <p><%- data[i].creatorName %> ● 2019</p>
+              </div>
+              <span class="span1"></span><span class="span2"></span><span class="span3"></span><span class="span4"></span>
+            </div>
+            <img src="<%- data[i].photoUrl %>">
+            <div class="clear"></div>
+          </a>
+        </li>
+      <% } else if ( i % 2 == 0) {%>
+        <li>
+          <a href="/detail?post=<%- idData[i] %>">
+            <img src="<%- data[i].photoUrl %>">
+            <div class="rightInformation">
+              <div class="mid">
+                <h1 class="title"><%- data[i].title %></h1>
+                <p class="introduction"><%- data[i].introduction%></p>
+                <p><%- data[i].creatorName %> ● 2019</p>
+              </div>
+              <span class="span1"></span><span class="span2"></span><span class="span3"></span><span class="span4"></span>
+            </div>
+            <div class="clear"></div>
+          </a>
+        </li>
+      <% } else {%>
+        <li>
+          <a href="/detail?post=<%- idData[i] %>">
+            <div class="rightInformation">
+              <div class="mid">
+                <h1 class="title"><%- data[i].title %></h1>
+                <p class="introduction"><%- data[i].introduction%></p>
+                <p><%- data[i].creatorName %> ● 2019</p>
+              </div>
+              <span class="span1"></span><span class="span2"></span><span class="span3"></span><span class="span4"></span>
+            </div>
+            <img src="<%- data[i].photoUrl %>">
+            <div class="clear"></div>
+          </a>
+        </li>
+      <% } %>
+    <% } %>
+  </ul>
+  
+
+  <a href="/create" class="createButton">
+    <button class="btn btn-outline-info">
+      發佈</br>貼文
+    </button>
+  </a>
+  </div>
+</body>
+
+</html>
